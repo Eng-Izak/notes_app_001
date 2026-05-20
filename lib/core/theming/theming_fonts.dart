@@ -1,0 +1,3 @@
+class ThemingFonts {
+  ThemingFonts._();
+}
