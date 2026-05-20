@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:notes_app_001/features/home/data/data_samples_for_test.dart';
+import 'package:notes_app_001/features/home/ui/widgets/custom_floating_action_button.dart';
+import 'package:notes_app_001/features/home/ui/widgets/note_item_card.dart';
+import 'package:notes_app_001/features/home/ui/widgets/notes_header_row.dart';
+
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+          child: Column(
+            children: [
+              // الهيدر العلوي يحتوي على كلمة Notes وزر البحث
+              const NotesHeaderRow(),
+              const SizedBox(height: 24),
+              // قائمة الملاحظات التمريرية
+              Expanded(
+                child: ListView.builder(
+                  itemCount: notes.length,
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: NoteItemCard(note: notes[index]),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      // زر الإضافة العائم أسفل اليمين باللون الفيروزي
+      floatingActionButton: const CustomFloatingActionButton(),
+    );
+  }
+}
