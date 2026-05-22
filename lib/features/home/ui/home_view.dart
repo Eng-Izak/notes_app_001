@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app_001/features/home/data/data_samples_for_test.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_floating_action_button.dart';
 import 'package:notes_app_001/features/home/ui/widgets/note_item_card.dart';
-import 'package:notes_app_001/features/home/ui/widgets/notes_header_row.dart';
+import 'package:notes_app_001/core/shared/widgets/custom_app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               // الهيدر العلوي يحتوي على كلمة Notes وزر البحث
-              const NotesHeaderRow(),
+              const CustomAppBar(txt: 'Notes', icon: Icons.search),
               const SizedBox(height: 24),
               // قائمة الملاحظات التمريرية
               Expanded(

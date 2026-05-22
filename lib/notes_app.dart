@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_001/features/home/ui/home_view.dart';
+import 'package:notes_app_001/core/routing/routing_names.dart';
+import 'package:notes_app_001/core/routing/routing_router.dart';
 
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
@@ -14,7 +15,11 @@ class NotesApp extends StatelessWidget {
           0xFF1F1F1F,
         ), // لون الخلفية الداكن الشبيه بالصورة
       ),
-      home: const HomeView(),
+
+      // 1. تحديد المسار البدائي للتطبيق من الكلاس الثابت
+      initialRoute: RoutingNames.initial,
+      // 2. تعيين دالة التوليد المخصصة التي قمنا بكتابتها
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }

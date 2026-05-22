@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_search_button.dart';
 
-class NotesHeaderRow extends StatelessWidget {
-  const NotesHeaderRow({super.key});
-
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({super.key, required this.txt, required this.icon});
+  final String txt;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         Text(
-          'Notes',
+          txt,
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
-        CustomSearchButton(),
+        CustomSearchButton(icon: icon),
       ],
     );
   }
