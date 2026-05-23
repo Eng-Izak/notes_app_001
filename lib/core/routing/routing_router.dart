@@ -8,6 +8,7 @@ class AppRouter {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     // لاستقبال أي بيانات ممررة بين الشاشات (الأرجومنت)
+    // ignore: unused_local_variable
     final arguments = settings.arguments;
 
     switch (settings.name) {

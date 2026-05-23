@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        CustomSearchButton(icon: icon),
+        CustomButtonIcon(icon: icon),
       ],
     );
   }
