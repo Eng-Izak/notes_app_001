@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_001/core/routing/routing_names.dart';
-import 'package:notes_app_001/features/home/data/models/note_model.dart';
+import 'package:notes_app_001/core/shared/models/note_model.dart';
 
 class NoteItemCard extends StatelessWidget {
   final NoteModel note;
@@ -19,7 +19,7 @@ class NoteItemCard extends StatelessWidget {
           right: 16,
         ),
         decoration: BoxDecoration(
-          color: note.color,
+          color: Colors.yellow,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -38,7 +38,7 @@ class NoteItemCard extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16.0),
                 child: Text(
-                  note.subtitle,
+                  note.content,
                   style: TextStyle(
                     color: Colors.black.withAlpha((255 * 0.4).toInt()),
                     fontSize: 16,
@@ -53,7 +53,7 @@ class NoteItemCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16, right: 8),
               child: Text(
-                note.date,
+                note.createdAt,
                 style: TextStyle(
                   color: Colors.black.withAlpha((255 * 0.4).toInt()),
                   fontSize: 14,

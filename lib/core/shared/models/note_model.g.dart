@@ -21,13 +21,14 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       content: fields[1] as String,
       createdAt: fields[2] as String,
       color: (fields[3] as num).toInt(),
+      kColor: fields[4] != null ? Color((fields[4] as num).toInt()) : null,
     );
   }
 
   @override
   void write(BinaryWriter writer, NoteModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)

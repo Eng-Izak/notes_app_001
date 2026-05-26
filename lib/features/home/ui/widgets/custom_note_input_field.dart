@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app_001/features/home/ui/widgets/custom_border_theme.dart';
 
 class CustomNoteInputField extends StatelessWidget {
-  final TextEditingController? controller;
   final String hintText;
   final int? maxLines;
-
+  final void Function(String?)? onSaved;
   const CustomNoteInputField({
     super.key,
-    this.controller,
     required this.hintText,
     this.maxLines,
+    this.onSaved,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
+    return TextFormField(
+      onSaved: onSaved,
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return 'This field cannot be empty';
+        }
+        return null;
+      },
       maxLines: maxLines,
       cursorColor: const Color(0xFF4EE2CE), // لون المؤشر الفيروزي
       style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -32,14 +38,14 @@ class CustomNoteInputField extends StatelessWidget {
           vertical: 16,
         ),
         // الحدود الافتراضية
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.grey, width: 1),
-        ),
+        enabledBorder: customBorderTheme(),
         // الحدود عند الضغط والكتابة
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFF4EE2CE), width: 1.5),
+        focusedBorder: customBorderTheme(),
+        errorBorder: customBorderTheme().copyWith(
+          borderSide: const BorderSide(color: Colors.red, width: 1.5),
+        ),
+        focusedErrorBorder: customBorderTheme().copyWith(
+          borderSide: const BorderSide(color: Colors.red, width: 1.5),
         ),
       ),
     );

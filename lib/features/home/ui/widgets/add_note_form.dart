@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:notes_app_001/features/home/ui/widgets/custom_add_button.dart';
+import 'package:notes_app_001/features/home/ui/widgets/custom_note_input_field.dart';
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  String? title, content;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autoValidateMode,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 10),
+
+          // حقل إدخال العنوان (Title)
+          CustomNoteInputField(
+            onSaved: (value) {
+              title = value;
+              print('Title: $title');
+            },
+            hintText: 'Title',
+            maxLines: 1,
+          ),
+          const SizedBox(height: 16),
+
+          // حقل إدخال المحتوى (Content)
+          CustomNoteInputField(
+            onSaved: (value) {
+              content = value;
+              print('Content: $content');
+            },
+            hintText: 'Content',
+            maxLines: 5, // مساحة أكبر للنص الأساسي
+          ),
+          const SizedBox(height: 32), // نموذج إضافة الملاحظة (العنوان والمحتوى)
+          // زر الإضافة السفلي (Add Button)
+          CustomAddButton(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                // هنا يمكنك إضافة الكود لحفظ الملاحظة الجديدة باستخدام العنوان والمحتوى
+                Navigator.pop(context);
+              } else {
+                setState(() => autoValidateMode = AutovalidateMode.always);
+              }
+            },
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
