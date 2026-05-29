@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:hive_ce/hive.dart';
 part 'note_model.g.dart';
 
@@ -12,13 +12,13 @@ class NoteModel extends HiveObject {
   final String createdAt;
   @HiveField(3)
   final int color;
-  final Color? kColor;
+  // final Color? kColor;
 
   NoteModel({
     required this.title,
     required this.content,
     required this.createdAt,
     required this.color,
-    this.kColor,
+    // this.kColor,
   });
 }

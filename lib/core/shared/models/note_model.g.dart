@@ -21,7 +21,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       content: fields[1] as String,
       createdAt: fields[2] as String,
       color: (fields[3] as num).toInt(),
-      kColor: fields[4] != null ? Color((fields[4] as num).toInt()) : null,
+      // kColor: fields[4] != null ? Color((fields[4] as num).toInt()) : null,
     );
   }
 

@@ -27,7 +27,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomNoteInputField(
             onSaved: (value) {
               title = value;
-              print('Title: $title');
             },
             hintText: 'Title',
             maxLines: 1,
@@ -38,7 +37,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomNoteInputField(
             onSaved: (value) {
               content = value;
-              print('Content: $content');
             },
             hintText: 'Content',
             maxLines: 5, // مساحة أكبر للنص الأساسي

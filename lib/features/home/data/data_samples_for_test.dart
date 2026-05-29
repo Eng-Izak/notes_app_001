@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:notes_app_001/core/shared/models/note_model.dart';
 // قائمة بيانات تجريبية للملاحظات بألوان مختلفة كما في الصورة
 
@@ -26,6 +26,6 @@ final List<NoteModel> notes = [
     content: 'Build your Career with Tharwat Samy',
     createdAt: 'May 21, 2022',
     color: 125464, // اللون البنفسجي الفاتح
-    kColor: const Color(0xFFCE93D8),
+    // kColor: const Color(0xFFCE93D8),
   ),
 ];

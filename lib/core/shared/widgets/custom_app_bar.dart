@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_search_button.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.txt, required this.icon});
+  const CustomAppBar({
+    super.key,
+    required this.txt,
+    required this.icon,
+    this.onPressed,
+  });
   final String txt;
   final IconData icon;
+  final void Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,7 +25,7 @@ class CustomAppBar extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        CustomButtonIcon(icon: icon),
+        CustomButtonIcon(icon: icon, onPressed: onPressed),
       ],
     );
   }
