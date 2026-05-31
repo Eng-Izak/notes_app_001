@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app_001/core/shared/models/note_model.dart';
+import 'package:notes_app_001/features/home/logic/cubit/add_note_cubit.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_add_button.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_note_input_field.dart';
 
@@ -47,8 +50,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                // هنا يمكنك إضافة الكود لحفظ الملاحظة الجديدة باستخدام العنوان والمحتوى
-                Navigator.pop(context);
+                NoteModel newNote = NoteModel(
+                  title: title!,
+                  content: content!,
+                  createdAt: DateTime.now().toString(),
+                  color: Colors.brown.value,
+                );
+                BlocProvider.of<AddNoteCubit>(context).addNote(newNote);
+                debugPrint('Note added successfully: $newNote');
               } else {
                 setState(() => autoValidateMode = AutovalidateMode.always);
               }

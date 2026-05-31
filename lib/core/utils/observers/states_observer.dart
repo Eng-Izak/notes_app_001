@@ -14,7 +14,7 @@ class StatesObserver implements BlocObserver {
 
   @override
   void onCreate(BlocBase<dynamic> bloc) {
-    // TODO: implement onCreate
+    debugPrint('onCreate -- bloc: ${bloc.runtimeType}');
   }
 
   @override
@@ -24,12 +24,14 @@ class StatesObserver implements BlocObserver {
     Object? error,
     StackTrace? stackTrace,
   ]) {
-    // TODO: implement onDone
+    debugPrint(
+      'onDone -- bloc: ${bloc.runtimeType}, event: $event, error: $error',
+    );
   }
 
   @override
   void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
-    // TODO: implement onEvent
+    debugPrint('onEvent -- bloc: ${bloc.runtimeType}, event: $event');
   }
 
   @override
@@ -37,11 +39,13 @@ class StatesObserver implements BlocObserver {
     Bloc<dynamic, dynamic> bloc,
     Transition<dynamic, dynamic> transition,
   ) {
-    // TODO: implement onTransition
+    debugPrint(
+      'onTransition -- bloc: ${bloc.runtimeType}, transition: $transition',
+    );
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    // TODO: implement onError
+    debugPrint('onError -- bloc: ${bloc.runtimeType}, error: $error');
   }
 }
