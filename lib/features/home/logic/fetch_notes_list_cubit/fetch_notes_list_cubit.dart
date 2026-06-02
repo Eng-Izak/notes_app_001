@@ -13,5 +13,6 @@ class FetchNotesListCubit extends Cubit<FetchNotesListState> {
   dynamic fetchNotesList() {
     Box<NoteModel> noteBox = Hive.box<NoteModel>(kNotesBox);
     notes = noteBox.values.toList();
+    emit(FetchNotesListSuccess());
   }
 }

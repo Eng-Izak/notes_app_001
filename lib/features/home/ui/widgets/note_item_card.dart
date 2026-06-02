@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_001/core/routing/routing_names.dart';
 import 'package:notes_app_001/core/shared/models/note_model.dart';
+import 'package:notes_app_001/features/home/logic/fetch_notes_list_cubit/fetch_notes_list_cubit.dart';
 
 class NoteItemCard extends StatelessWidget {
   final NoteModel note;
@@ -46,7 +48,12 @@ class NoteItemCard extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                  BlocProvider.of<FetchNotesListCubit>(
+                    context,
+                  ).fetchNotesList();
+                },
                 icon: const Icon(Icons.delete, color: Colors.black, size: 30),
               ),
             ),

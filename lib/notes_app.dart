@@ -9,8 +9,12 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FetchNotesListCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<FetchNotesListCubit>(
+          create: (context) => FetchNotesListCubit(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Notes App',
