@@ -53,9 +53,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 NoteModel newNote = NoteModel(
                   title: title!,
                   content: content!,
-                  createdAt: DateTime.now().toString(),
+                  createdAt: DateTime.now().toString().substring(0, 10),
                   // ignore: deprecated_member_use
-                  color: Colors.brown.value,
+                  color: Colors.yellow.value,
                 );
                 BlocProvider.of<AddNoteCubit>(context).addNote(newNote);
                 debugPrint('Note added successfully: $newNote');

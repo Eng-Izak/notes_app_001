@@ -8,13 +8,10 @@ part 'fetch_notes_list_state.dart';
 
 class FetchNotesListCubit extends Cubit<FetchNotesListState> {
   FetchNotesListCubit() : super(FetchNotesListInitial());
+  List<NoteModel>? notes;
+
   dynamic fetchNotesList() {
-    try {
-      Box<NoteModel> noteBox = Hive.box<NoteModel>(kNotesBox);
-      final List<NoteModel> notes = noteBox.values.toList();
-      emit(FetchNotesListSuccess(notes));
-    } catch (e) {
-      emit(FetchNotesListFailure(e.toString()));
-    }
+    Box<NoteModel> noteBox = Hive.box<NoteModel>(kNotesBox);
+    notes = noteBox.values.toList();
   }
 }

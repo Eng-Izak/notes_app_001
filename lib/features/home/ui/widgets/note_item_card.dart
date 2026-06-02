@@ -19,7 +19,7 @@ class NoteItemCard extends StatelessWidget {
           right: 16,
         ),
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
