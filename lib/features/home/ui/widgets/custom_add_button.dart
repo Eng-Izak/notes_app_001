@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app_001/features/home/logic/add_note_cubit/add_note_cubit.dart';
 
 class CustomAddButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -21,13 +23,31 @@ class CustomAddButton extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        child: const Text(
-          'Add',
-          style: TextStyle(
-            color: Colors.black, // نص أسود فوق الخلفية الفيروزية
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
+        child: BlocListener<AddNoteCubit, AddNoteState>(
+          listener: (context, state) {
+            if (state is AddNoteFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Failed to add note')),
+              );
+            }
+            if (state is AddNoteSuccess) {
+              Navigator.pop(context);
+            }
+          },
+          child: State is AddNoteLoading
+              ? SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(color: Colors.black),
+                ) // مؤشر تحميل أسود أثناء العملية
+              : Text(
+                  'Add',
+                  style: TextStyle(
+                    color: Colors.black, // نص أسود فوق الخلفية الفيروزية
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
         ),
       ),
     );
