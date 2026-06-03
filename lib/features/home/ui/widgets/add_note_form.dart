@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app_001/core/shared/models/note_model.dart';
+import 'package:notes_app_001/core/shared/widgets/colors_list_view_widget.dart';
 import 'package:notes_app_001/features/home/logic/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app_001/features/home/logic/fetch_notes_list_cubit/fetch_notes_list_cubit.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_add_button.dart';
@@ -46,7 +47,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hintText: 'Content',
             maxLines: 5, // مساحة أكبر للنص الأساسي
           ),
-          const SizedBox(height: 32), // نموذج إضافة الملاحظة (العنوان والمحتوى)
+          // const SizedBox(height: 32),
+          // نموذج إضافة الملاحظة (العنوان والمحتوى)
+          Container(
+            margin: const EdgeInsets.all(8.0),
+            height: 50,
+            child: ColorsListViewWidget(),
+          ),
           // زر الإضافة السفلي (Add Button)
           CustomAddButton(
             onPressed: () {
@@ -60,7 +67,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   content: content!,
                   createdAt: formattedDate,
                   // ignore: deprecated_member_use
-                  color: Colors.yellow.value,
+                  color: BlocProvider.of<AddNoteCubit>(context).noteColor.value,
                 );
                 BlocProvider.of<AddNoteCubit>(context).addNote(newNote);
                 BlocProvider.of<FetchNotesListCubit>(context).fetchNotesList();

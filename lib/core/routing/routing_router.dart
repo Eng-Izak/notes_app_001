@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app_001/core/shared/models/note_model.dart';
 import 'package:notes_app_001/features/edite_note/ui/edite_note_view.dart';
 import 'package:notes_app_001/features/home/ui/home_view.dart';
 import 'routing_names.dart';
@@ -16,7 +17,9 @@ class AppRouter {
         return _buildPageRoute(child: const HomeView());
 
       case RoutingNames.editNote:
-        return _buildPageRoute(child: const EditNoteView());
+        return _buildPageRoute(
+          child: EditNoteView(note: arguments as NoteModel),
+        );
 
       case RoutingNames.home:
         return _buildPageRoute(

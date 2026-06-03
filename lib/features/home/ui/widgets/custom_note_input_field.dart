@@ -2,19 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:notes_app_001/features/home/ui/widgets/custom_border_theme.dart';
 
 class CustomNoteInputField extends StatelessWidget {
-  final String hintText;
+  final String? initialValue;
+  final String? hintText;
   final int? maxLines;
   final void Function(String?)? onSaved;
+  final Function(String)? onChanged;
   const CustomNoteInputField({
     super.key,
-    required this.hintText,
+    this.hintText,
     this.maxLines,
     this.onSaved,
+    this.onChanged,
+    this.initialValue,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
+      onChanged: onChanged,
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.trim().isEmpty) {

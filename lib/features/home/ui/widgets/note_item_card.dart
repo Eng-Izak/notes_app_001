@@ -12,7 +12,11 @@ class NoteItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, RoutingNames.editNote),
+      onTap: () => Navigator.pushNamed(
+        context,
+        RoutingNames.editNote,
+        arguments: note,
+      ), // تمرير الملاحظة إلى شاشة التعديل
       child: Container(
         padding: const EdgeInsets.only(
           top: 24,
@@ -32,7 +36,7 @@ class NoteItemCard extends StatelessWidget {
               title: Text(
                 note.title,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 26,
                   fontWeight: FontWeight.w500,
                 ),
@@ -42,7 +46,7 @@ class NoteItemCard extends StatelessWidget {
                 child: Text(
                   note.content,
                   style: TextStyle(
-                    color: Colors.black.withAlpha((255 * 0.4).toInt()),
+                    color: Colors.white.withAlpha((255 * 0.4).toInt()),
                     fontSize: 16,
                   ),
                 ),
